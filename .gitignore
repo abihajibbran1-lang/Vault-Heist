@@ -1,0 +1,21 @@
+# Executables and compiled files
+*.exe
+*.dll
+*.o
+*.obj
+*.pdb
+*.a
+*.lib
+
+# Build folders
+build/
+dist/
+
+# VS Code temporary files
+.vscode/ipch/
+.vscode/*.db
+.vscode/*.opendb
+
+# Generated save files
+data/saves/*
+!data/saves/.gitkeep
