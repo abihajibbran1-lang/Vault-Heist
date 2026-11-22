@@ -12,7 +12,8 @@ Read, in order:
 2. docs/architecture.md — layer responsibilities, memory, filenames.
 3. docs/event-contract.md — producer/consumer interface and playback rules.
 4. docs/development-guide.md — implementation sequence and acceptance criteria.
-5. The actual headers and source files relevant to the assigned task.
+5. docs/endless-mode-rules.md — owner-approved Endless timing, interaction and persistence rules.
+6. The actual headers and source files relevant to the assigned task.
 The official assignment PDF and instructor clarifications outrank all documents here. When conflicts occur, flag them; do not choose your own replacement.
 1. Absolute C++ restrictions
 - No STL containers, algorithms, adapters or convenience collections, including std::vector, std::list, std::map, std::set, std::stack, std::queue, std::priority_queue, std::array, std::sort, etc. std::string is explicitly allowed for text.

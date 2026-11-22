@@ -1,0 +1,28 @@
+{
+    "act": 3,
+    "level": 4,
+    "seed": 3304,
+    "title": "Auto repair prediction",
+    "kind": "AVL_PREDICT",
+    "objective": "Predict the rotation before each insertion. Watch the actual automatic repair.",
+    "hint": "Compare the new key with each ancestor to identify the first unbalanced case.",
+    "values": [
+        30,
+        20,
+        10,
+        20,
+        30,
+        10,
+        10,
+        30
+    ],
+    "inorder": [],
+    "targets": [
+        10,
+        30,
+        20,
+        20
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER",
+    "caseSize": 2
+}

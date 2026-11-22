@@ -1,0 +1,25 @@
+{
+    "act": 2,
+    "level": 5,
+    "seed": 3222,
+    "title": "The Lazy Architect",
+    "kind": "SEARCH",
+    "objective": "Search for 9 in a corridor built from sorted deliveries. Every comparison matters.",
+    "hint": "The sorted deliveries form a chain of height n; balancing keeps searches short.",
+    "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "inorder": [],
+    "targets": [
+        9
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

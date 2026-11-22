@@ -1,0 +1,29 @@
+{
+    "act": 1,
+    "level": 1,
+    "seed": 3118,
+    "title": "Patrol route",
+    "kind": "TRAVERSAL",
+    "objective": "Click rooms in preorder, inorder, postorder and level order.",
+    "hint": "Root-left-right; left-root-right; left-right-root; then row by row.",
+    "values": [
+        50,
+        20,
+        10,
+        35,
+        80,
+        65,
+        95
+    ],
+    "inorder": [
+        10,
+        20,
+        35,
+        50,
+        65,
+        80,
+        95
+    ],
+    "targets": [],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

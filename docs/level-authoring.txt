@@ -1,0 +1,58 @@
+VAULT HEIST LEVEL DATA
+
+The approved campaign has four acts and five levels per act. Files are named
+data/levels/actA-levelL.json. Editing an existing supported objective's scenario
+does not require recompiling its rules; the JSON is read when a level loads.
+New objective types or extra campaign slots are not implied by this schema.
+This is a current limitation: the assignment's general requirement to add new
+levels without code changes is only partially met. You can replace scenarios
+in the existing twenty slots without code changes; extra slots need controller
+and campaign-map changes. Do not claim arbitrary level-file discovery exists.
+
+Required fields:
+act, level: integer slot identifiers.
+seed: reproducibility metadata, a nonnegative integer.
+title, objective, hint: player-facing text.
+kind: a supported objective identifier.
+values: explicit preorder for general/raw trees, insertion order for ordered
+trees, or raw heap array values. Values are reproducible fixtures; changing the
+seed alone does not randomize them at runtime.
+inorder: matching inorder for reconstruction/raw AVL cases, otherwise [].
+targets: objective-specific keys, bounds, kth/rank targets or repair indices.
+orders: pipe-separated traversal names for a traversal challenge, otherwise "".
+caseSize: 0 for one scenario, or the width of each flattened scenario block.
+
+Tree/ordered objective kinds:
+TRAVERSAL, RECONSTRUCT, HEIGHTS, LCA_PATH, MIRROR, SEARCH, INSERT_PATH,
+DELETE_CASE, RANGE, AVL_BADGES, AVL_SINGLE, AVL_DOUBLE, AVL_PREDICT, AVL_ORDER.
+
+Heap objective kinds:
+HEAP_BUILD: restore every parent >= child. Build and valid repair swaps allowed.
+HEAP_REPAIR: flattened disturbed arrays; targets contain each repair index.
+The supplied two rounds exercise downward repair, then upward repair.
+HEAP_EXTRACT, HEAP_RACE, HEAP_FINAL: build if needed, extract a maximum to the
+sorted suffix, restore the active heap, repeat. No full-sort campaign shortcut.
+
+Do not add optimalSteps to JSON: the controller computes reference costs from
+real backend operations. Capacity is ceil(1.5 * optimalSteps) + 2. Do not add
+bonuses, penalties, screens or mechanics outside the approved requirements.
+
+Heap examples should include random, reverse/already-heap and duplicate-heavy
+arrays. Keep arrays within the supported 6-15 value scenario limit, or use
+caseSize for supported multi-round repairs. Sorted cells are never writable by
+repair operations. Tree reconstruction requires distinct room tokens.
+
+Example: replace the array in an existing heap-build slot (4.1).
+1. Keep a copy of data/levels/act4-level1.json outside the levels directory.
+2. Keep act=4, level=1, kind="HEAP_BUILD", caseSize=0 and the existing schema.
+3. Set values to [8, 3, 12, 1, 5, 9, 2], and adjust title/objective/hint text.
+4. Keep inorder=[], targets=[] and orders="" for this objective.
+5. Save valid JSON (double-quoted strings, no comments or trailing commas).
+6. Relaunch the game and enter 4.1 after unlocking it. Check the briefing and
+   values, build the heap, verify success, then try undo/replay/reset and failure.
+7. Restore the supplied fixture after experimentation if submitting the original
+   campaign. Some regression cases intentionally target the supplied scenario.
+
+Run the automated campaign suite after changing data:
+SANITIZE=1 ASAN_OPTIONS=detect_leaks=1 bash tests/run.sh --campaign-only
+Also play the changed scenario through its briefing, success and failure paths.

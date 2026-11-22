@@ -1,0 +1,60 @@
+VAULT HEIST VERIFICATION RECORD — revised 22 November 2026
+
+Environment: GCC 15.2.0, C++17, Ubuntu WSL, SFML 2.6.1 in /usr/local.
+The full sanitizer suite and all seven benchmark experiments were rerun on
+22 November 2026 and passed. Raw suite output: docs/test-run-2026-11-22.txt.
+Graphical captures and launch evidence below were recorded on 20 November;
+they were not regenerated or represented as fresh manual testing on the 22nd.
+
+Executed:
+SANITIZE=1 ASAN_OPTIONS=detect_leaks=1 bash tests/run.sh
+bash tests/benchmark.sh
+bash run.sh --build-only
+DISPLAY=:0 ./build/vault-heist --smoke-test
+DISPLAY=:0 ./build/vault-heist --smoke-endless
+
+Passed model suites:
+- BinaryTree traversal, reconstruction, metric/path/mirror, ownership, events;
+  empty/single/skewed/full trees; traversal IDs with recording disabled.
+- BST insertion/search/deletion cases and queries; integer extremes.
+- AVL four rotation families, 2,000 deterministic mutation operations checked
+  against an independent manually tracked set; size/rank/kth and deletion.
+- MaxHeap build/extraction/sort and ownership, negatives and duplicate values.
+
+Passed controller suites:
+- 400 paired seeded Endless rounds, five prediction cases, clock/deadlines,
+  pause/focus/animation freeze, top-10 ranking/ties, save/resume and JSON errors.
+- Sandbox reconstruction, explicit AVL repair, undo/replay, heap restoration.
+- Every campaign level 1.1 through 4.5: solve, fail, retry, optimum score,
+  replay without extra scoring, saved stars and sequential unlocking.
+- Partial double-rotation checkpoints, exact wrong-rotation penalties and undo.
+- Heap active/sorted boundary, invalid extraction without mutation, extraction
+  maximum/suffix checks, checkpoint restore and ascending final array.
+- HEAP_SORT_COMPLETE appears exactly once on final extraction.
+- Checkpoint recovery when the separate campaign-progress file is stale, and
+  save replacement/missing-source handling without altering player saves.
+
+Sanitizer runs reported no AddressSanitizer, UndefinedBehaviorSanitizer or leak
+errors. Assertions remained enabled; do not compile the tests with -DNDEBUG.
+
+Graphical evidence:
+Menu and Endless windows launched and exited normally under WSLg.
+Representative campaign/briefing windows and actual LL/RR/LR/RL playback frames,
+heap construction, extraction, heapify and final result were captured from the
+running game. See docs/captures and the report. Evidence capture is automated
+through real controller commands; it is not a claim of exhaustive manual input
+coverage. A vertical-sync-not-supported message was nonfatal in WSLg.
+
+Benchmarks:
+Events and GUI disabled, GCC -O2, deterministic inputs. Six tree cases and twelve
+heap cases at 100/1,000/10,000 values were measured. Sorting outputs and query
+checksums were checked. Raw results are docs/benchmarks/trees.csv and heaps.csv.
+Timings are one local CPU-clock run; tiny/zero values are resolution-limited.
+The revised report includes all seven assignment Section 10 experiments with
+search timing, average insert/delete rotation counts, maximum per delete,
+construction time, sort comparisons/swaps/shifts and algorithmic auxiliary space.
+Tree CSVs also retain per-query and per-operation averages explicitly.
+
+Not verified: exhaustive manual GUI paths, 200-node/large-heap 60-FPS acceptance,
+native Windows deployment, or optional sound assets. Some nonmutating Sandbox
+queries have result feedback but do not yet have complete per-node playback.

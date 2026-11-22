@@ -1,0 +1,25 @@
+{
+    "act": 3,
+    "level": 5,
+    "seed": 3305,
+    "title": "Order-statistic heist",
+    "kind": "AVL_ORDER",
+    "objective": "Follow subtree sizes to the third smallest treasure, answer rank, then validate size.",
+    "hint": "Compare k with left subtree size + 1. Rank counts keys smaller than or equal to the target.",
+    "values": [
+        50,
+        30,
+        70,
+        20,
+        40,
+        60,
+        80
+    ],
+    "inorder": [],
+    "targets": [
+        3,
+        60
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER",
+    "caseSize": 0
+}

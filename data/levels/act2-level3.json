@@ -1,0 +1,26 @@
+{
+    "act": 2,
+    "level": 3,
+    "seed": 3220,
+    "title": "Steal and collapse",
+    "kind": "DELETE_CASE",
+    "objective": "Delete treasures 20, 60 and 50. Identify each deletion case first.",
+    "hint": "Count the target room's children. Two children require its inorder successor.",
+    "values": [
+        50,
+        30,
+        70,
+        20,
+        40,
+        60,
+        80,
+        65
+    ],
+    "inorder": [],
+    "targets": [
+        20,
+        60,
+        50
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

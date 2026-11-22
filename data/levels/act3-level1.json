@@ -1,0 +1,30 @@
+{
+    "act": 3,
+    "level": 1,
+    "seed": 3301,
+    "title": "Read the badges",
+    "kind": "AVL_BADGES",
+    "objective": "Click all unbalanced rooms. Use the balance-factor badges.",
+    "hint": "Balance factor is height(left) minus height(right); absolute values above 1 are invalid.",
+    "values": [
+        50,
+        30,
+        20,
+        10,
+        5,
+        70,
+        80
+    ],
+    "inorder": [
+        5,
+        10,
+        20,
+        30,
+        50,
+        70,
+        80
+    ],
+    "targets": [],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER",
+    "caseSize": 0
+}

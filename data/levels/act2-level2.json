@@ -1,0 +1,24 @@
+{
+    "act": 2,
+    "level": 2,
+    "seed": 3219,
+    "title": "Stash loot",
+    "kind": "INSERT_PATH",
+    "objective": "Guide treasure 55 from the entrance to its correct empty leaf slot.",
+    "hint": "Follow BST comparisons until the required left or right link is empty.",
+    "values": [
+        50,
+        30,
+        70,
+        20,
+        40,
+        60,
+        80,
+        65
+    ],
+    "inorder": [],
+    "targets": [
+        55
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

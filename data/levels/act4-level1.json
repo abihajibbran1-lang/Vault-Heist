@@ -1,0 +1,22 @@
+{
+    "act": 4,
+    "level": 1,
+    "seed": 3401,
+    "title": "Activate the vault",
+    "kind": "HEAP_BUILD",
+    "objective": "Organise every treasure into a valid Max Heap.",
+    "hint": "A larger child may swap with its parent. Build Heap works bottom-up.",
+    "values": [
+        3,
+        1,
+        6,
+        5,
+        2,
+        4,
+        0
+    ],
+    "inorder": [],
+    "targets": [],
+    "orders": "",
+    "caseSize": 0
+}

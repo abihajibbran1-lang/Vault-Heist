@@ -1,0 +1,22 @@
+{
+    "act": 4,
+    "level": 3,
+    "seed": 3403,
+    "title": "Extract the greatest treasure",
+    "kind": "HEAP_EXTRACT",
+    "objective": "Extract every maximum into the sorted region, restoring the active heap each time.",
+    "hint": "Only extract when the heap is valid. Then heapify from index 0.",
+    "values": [
+        30,
+        24,
+        22,
+        12,
+        18,
+        8,
+        10
+    ],
+    "inorder": [],
+    "targets": [],
+    "orders": "",
+    "caseSize": 0
+}

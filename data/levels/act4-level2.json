@@ -1,0 +1,32 @@
+{
+    "act": 4,
+    "level": 2,
+    "seed": 3402,
+    "title": "Repair the security locks",
+    "kind": "HEAP_REPAIR",
+    "objective": "Repair a downward disturbance, then an upward disturbance.",
+    "hint": "Select index 0 and Heapify in round 1; select index 6 and Sift Up in round 2.",
+    "values": [
+        2,
+        18,
+        14,
+        9,
+        10,
+        6,
+        7,
+        20,
+        18,
+        14,
+        9,
+        10,
+        6,
+        27
+    ],
+    "inorder": [],
+    "targets": [
+        0,
+        6
+    ],
+    "orders": "",
+    "caseSize": 7
+}

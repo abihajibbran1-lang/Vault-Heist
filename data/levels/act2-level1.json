@@ -1,0 +1,24 @@
+{
+    "act": 2,
+    "level": 1,
+    "seed": 3218,
+    "title": "Search heist",
+    "kind": "SEARCH",
+    "objective": "Find treasure 65. Choose Left, Right or Found at each room.",
+    "hint": "Compare the target to the current key: smaller goes left; larger goes right.",
+    "values": [
+        50,
+        30,
+        70,
+        20,
+        40,
+        60,
+        80,
+        65
+    ],
+    "inorder": [],
+    "targets": [
+        65
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

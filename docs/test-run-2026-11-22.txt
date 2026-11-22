@@ -1,0 +1,25 @@
+BinaryTree: traversal, reconstruction, metrics, paths, mirror, ownership and event tests passed.
+BST, AVL and MaxHeap: operations, rotations, invariants, events, copies and stress tests passed.
+Endless: deterministic stream, predictions, timing, pause, leaderboard and save/resume tests passed.
+Campaign 1.1: solve/fail/retry, score and replay passed.
+Campaign 1.2: solve/fail/retry, score and replay passed.
+Campaign 1.3: solve/fail/retry, score and replay passed.
+Campaign 1.4: solve/fail/retry, score and replay passed.
+Campaign 1.5: solve/fail/retry, score and replay passed.
+Campaign 2.1: solve/fail/retry, score and replay passed.
+Campaign 2.2: solve/fail/retry, score and replay passed.
+Campaign 2.3: solve/fail/retry, score and replay passed.
+Campaign 2.4: solve/fail/retry, score and replay passed.
+Campaign 2.5: solve/fail/retry, score and replay passed.
+Campaign 3.1: solve/fail/retry, score and replay passed.
+Campaign 3.2: solve/fail/retry, score and replay passed.
+Campaign 3.3: solve/fail/retry, score and replay passed.
+Campaign 3.4: solve/fail/retry, score and replay passed.
+Campaign 3.5: solve/fail/retry, score and replay passed.
+Campaign 4.1: solve/fail/retry, score and replay passed.
+Campaign 4.2: solve/fail/retry, score and replay passed.
+Campaign 4.3: solve/fail/retry, score and replay passed.
+Campaign 4.4: solve/fail/retry, score and replay passed.
+Campaign 4.5: solve/fail/retry, score and replay passed.
+Campaign test saves: build/endless-tests.D3WoAd/campaign
+Save replacement and failed-source preservation passed.

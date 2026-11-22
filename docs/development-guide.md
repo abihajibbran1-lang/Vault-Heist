@@ -1,12 +1,12 @@
 # Vault Heist — Development Guide
 
-**Purpose:** Tell developers and IDE agents exactly how to implement the approved project in the existing repository, without inventing new features.  
+**Purpose:** Tell developers and IDE agents exactly how to implement the approved project in the existing repository, without inventing new features.
 **Read first:** `AGENTS.md`, `docs/prd.md`, `docs/architecture.md`, `docs/event-contract.md`.
 
 ## 1. Development environment
 
-- Windows + VS Code, C++17 or later, GCC/MinGW-w64.
-- SFML 3 is the intended GUI library. Use the locally built SFML installation after it is verified.
+- Verified local environment: Windows with Ubuntu WSL, GCC 15.2.0, C++17, and VS Code connected to Ubuntu WSL.
+- The approved GUI target is SFML 2.6.1. `run.sh` explicitly uses `/usr/local/include` and `/usr/local/lib`; this installation passed a WSLg window smoke test. The system `pkg-config` separately reports SFML 3.0.2; do not mix those headers and libraries or use SFML 3 APIs in this project.
 - Building **SFML itself** using CMake is acceptable because the owner agreed to that one-time step. **Do not convert Vault Heist to a CMake project** without approval. The game can compile using a VS Code build task calling `g++` with include/library paths.
 - Development must not require a backend web service, REST API, database, internet account or additional programming language.
 - Backend and middleware tests must compile independently from SFML.

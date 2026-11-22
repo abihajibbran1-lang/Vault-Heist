@@ -1,0 +1,40 @@
+{
+    "act": 3,
+    "level": 3,
+    "seed": 3303,
+    "title": "Manual double repair",
+    "kind": "AVL_DOUBLE",
+    "objective": "Identify LR/RL, then perform the two primitive rotations separately.",
+    "hint": "LR: left at the left child, then right at the root. RL is the reverse.",
+    "values": [
+        30,
+        10,
+        20,
+        10,
+        30,
+        20,
+        70,
+        30,
+        50,
+        30,
+        70,
+        50
+    ],
+    "inorder": [
+        10,
+        20,
+        30,
+        10,
+        20,
+        30,
+        30,
+        50,
+        70,
+        30,
+        50,
+        70
+    ],
+    "targets": [],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER",
+    "caseSize": 3
+}

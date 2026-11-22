@@ -1,0 +1,32 @@
+{
+    "act": 1,
+    "level": 4,
+    "seed": 3121,
+    "title": "Meeting point",
+    "kind": "LCA_PATH",
+    "objective": "Select rooms 12 and 84, their meeting room, then trace the path from 12 to 84.",
+    "hint": "The LCA is the deepest common room on the two root-to-room paths.",
+    "values": [
+        42,
+        91,
+        12,
+        7,
+        63,
+        28,
+        84
+    ],
+    "inorder": [
+        12,
+        91,
+        7,
+        42,
+        28,
+        63,
+        84
+    ],
+    "targets": [
+        12,
+        84
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

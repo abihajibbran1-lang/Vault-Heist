@@ -1,6 +1,6 @@
 # Vault Heist — Technical Architecture
 
-**Companion documents:** `docs/prd.md`, `docs/event-contract.md`, `docs/development-guide.md`, `AGENTS.md`.  
+**Companion documents:** `docs/prd.md`, `docs/event-contract.md`, `docs/development-guide.md`, `docs/endless-mode-rules.md`, `AGENTS.md`.
 **Implementation principle:** One C++ desktop executable with three layers, **not** a client/server application.
 
 ## 1. Boundaries and dependency direction
@@ -211,6 +211,9 @@ Document who owns each array and when it is freed. Prefer one `GameSnapshot` own
 - `main.cpp`: initialize window, controller/UI, handle events, call time-based updates, draw, display. No data structure algorithms.
 
 SFML is for rendering, input, clock and optionally audio. The actual installed graphics/audio modules must match the local compiler. **Building SFML from source with CMake is separate from building this game**; the game can use VS Code `tasks.json` and GCC directly, as preferred.
+
+The approved local frontend target is SFML 2.6.1 in `/usr/local`, using Ubuntu
+WSL/WSLg and C++17. Endless behavior is specified in `docs/endless-mode-rules.md`.
 
 The GUI's visual state may lag behind the actual backend state during animation. It starts with the pre-action snapshot, applies event-defined changes, then must equal the authoritative post-action snapshot at operation completion. Never render only the final backend state during an animated operation.
 

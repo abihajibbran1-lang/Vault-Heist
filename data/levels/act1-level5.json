@@ -1,0 +1,29 @@
+{
+    "act": 1,
+    "level": 5,
+    "seed": 3122,
+    "title": "Mirror the vault",
+    "kind": "MIRROR",
+    "objective": "Click rooms bottom-up to swap their children, or choose Auto.",
+    "hint": "A mirror swaps left and right at every room, keeping room IDs and values.",
+    "values": [
+        42,
+        91,
+        12,
+        7,
+        63,
+        28,
+        84
+    ],
+    "inorder": [
+        12,
+        91,
+        7,
+        42,
+        28,
+        63,
+        84
+    ],
+    "targets": [],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

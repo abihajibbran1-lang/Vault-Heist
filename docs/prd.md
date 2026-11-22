@@ -2,7 +2,7 @@
 Status: Approved planning baseline (17 November 2026)
 Source of truth: Course handout, Project Deliverable 1; decisions recorded with the project owner.
 Delivery deadline: 20 November 2026, 11:59 PM (course submission).
-Target platform: Windows desktop; C++ and SFML; developed in VS Code.
+Target platform: Windows desktop through Ubuntu WSL/WSLg; C++17 and SFML 2.6.1; developed in VS Code. SFML 2.6.1 is owner-approved and verified locally.
 1. Product and experience
 Vault Heist is a single-player puzzle-strategy game about navigating and manipulating a vault represented by data structures. The player solves short challenges by clicking rooms, choosing operations, and watching clear step-by-step animations. The emphasis is on doing the algorithms, not on long explanatory lessons.
 
@@ -73,7 +73,7 @@ Level	Objective and interaction	Acceptance condition
 
 Non-campaign modes
 - Sandbox: accessible immediately. Select General Tree, BST, AVL, or Max Heap; enter values manually, generate a valid example, and invoke all required operations for the chosen structure. Show animations, results, and validation feedback.
-- Endless: implement the handout's escalating stream of AVL inserts/deletes, preserving structure validity. Score survival time and keep a local-file leaderboard. No extra Endless mechanics.
+- Endless: implement the owner-approved rules in `docs/endless-mode-rules.md`, including rotation prediction, deterministic insert/delete requests, active-time deadlines, pause behavior, survival scoring, local leaderboard and save/resume.
 5. Required data structures and algorithms
 BinaryTree
 Recursive and iterative preorder/inorder/postorder/level-order; reconstruction from preorder+inorder and postorder+inorder; height, diameter, LCA, root-to-node path, mirror, same-tree and symmetry checks.

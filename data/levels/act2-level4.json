@@ -1,0 +1,25 @@
+{
+    "act": 2,
+    "level": 4,
+    "seed": 3221,
+    "title": "Range raid",
+    "kind": "RANGE",
+    "objective": "Query [25,70], then click exactly the returned rooms. Watch skipped subtrees.",
+    "hint": "A sorted subtree outside the bounds can be skipped without visiting its rooms.",
+    "values": [
+        50,
+        30,
+        70,
+        20,
+        40,
+        60,
+        80,
+        65
+    ],
+    "inorder": [],
+    "targets": [
+        25,
+        70
+    ],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER"
+}

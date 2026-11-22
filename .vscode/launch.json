@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Vault Heist (Ubuntu WSL)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/vault-heist",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "Vault Heist: build in WSL",
+            "externalConsole": false,
+            "environment": [{"name": "DISPLAY", "value": ":0"}]
+        }
+    ]
+}

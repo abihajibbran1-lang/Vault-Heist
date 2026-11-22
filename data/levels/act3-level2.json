@@ -1,0 +1,40 @@
+{
+    "act": 3,
+    "level": 2,
+    "seed": 3302,
+    "title": "Manual single repair",
+    "kind": "AVL_SINGLE",
+    "objective": "Repair four LL/RR examples by dragging onto the pivot and choosing a rotation.",
+    "hint": "LL uses one right rotation. RR uses one left rotation.",
+    "values": [
+        30,
+        20,
+        10,
+        10,
+        20,
+        30,
+        70,
+        50,
+        30,
+        30,
+        50,
+        70
+    ],
+    "inorder": [
+        10,
+        20,
+        30,
+        10,
+        20,
+        30,
+        30,
+        50,
+        70,
+        30,
+        50,
+        70
+    ],
+    "targets": [],
+    "orders": "PREORDER|INORDER|POSTORDER|LEVELORDER",
+    "caseSize": 3
+}

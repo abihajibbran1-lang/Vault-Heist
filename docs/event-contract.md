@@ -1,6 +1,6 @@
 # Vault Heist — Backend ↔ Middleware ↔ Frontend Event Contract
 
-**Status:** Integration contract for implementation. Update together before changing public fields or operation semantics.  
+**Status:** Integration contract for implementation. Update together before changing public fields or operation semantics.
 **Applies to:** `include/backend/OperationEvent.h`, `include/middleware/GameEvent.h`, `GameSnapshot.h`, `GameController.h`, `BackendAdapter.h`, `AnimationController.h`.
 
 ## 1. Purpose and hard rules
@@ -19,6 +19,33 @@ Constraints:
 - Event log emission can be disabled during benchmarks; disabling it must not change algorithm correctness.
 
 ## 2. Data shapes
+
+The initial backend implementation uses `BackendFrame` to own `BackendNodeView[]`
+or heap `int[]` arrays. `BackendEvent::hasFrame` marks an attached deep frame.
+Structural frames are captured at the actual mutation boundary; stored height/size
+fields can still be awaiting the subsequent `UPDATE_HEIGHT`/`UPDATE_SIZE` events.
+`DONE` includes the final structural frame after mutation batches. Query-only
+batches end in `DONE` without an additional frame. `BackendEventBatch` owns its
+events and supports checked access, deep copy, and disabled recording.
+
+General-tree mirror uses `HIGHLIGHT_SUBTREE` (`VISITED`) with an after-swap frame;
+it swaps child links, never values or node IDs. Standalone heap extraction shrinks
+the array; Heap Sort retains all cells and decreases only the active heap size.
+Campaign `extractToSorted` also retains all cells, emits root/last swap, active
+size change and MARK_SORTED, and deliberately leaves repair to the next player
+action. `rebuildActive` never reintroduces the sorted suffix. Repair swaps are
+bounded to active parent/child indices. The last validated extraction emits
+HEAP_SORT_COMPLETE and only then permits the final campaign result.
+`EventBatch::map` preserves every field and deep frame in backend emission order.
+`AnimationController` owns the current batch and before/after snapshots, retains
+intermediate frames for previous/next, and advances one event per 0.20 seconds
+at speed 1. The renderer interpolates node positions or heap values from the
+current event's before/after frame. Authoritative backend state is never changed
+by playback. `GameSnapshot` wraps an owned `BackendFrame` and a structure name.
+
+Endless uses the same controller/adapter/event/playback path, but its timing,
+score, disabled Undo/Hint/Reset/Replay controls, and pause semantics come from
+`docs/endless-mode-rules.md`. It does not count campaign alarm events or stars.
 
 These are reference shapes to agree upon **before implementing**. Keep names and meanings consistent; implement constructors, cleanup and deep copying in the appropriate `.cpp` files. `GameEvent` below belongs to middleware. The backend owns a separate, minimal `BackendEvent` in `include/backend/OperationEvent.h` with the primitive/string payloads it needs; it **never includes the middleware header**. `EventMapper.cpp` translates between the two without rerunning algorithms.
 
