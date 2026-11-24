@@ -97,31 +97,6 @@ Sandbox. Mouse wheel zooms trees; middle-button drag pans; F resets the view.
 Settings controls playback speed and mute. No audio assets are required or
 currently loaded. Endless gameplay time excludes animation and paused time.
 
-## Backend tests
-
-```bash
-bash tests/run.sh
-SANITIZE=1 ASAN_OPTIONS=detect_leaks=1 bash tests/run.sh
-SANITIZE=1 ASAN_OPTIONS=detect_leaks=1 bash tests/run.sh --campaign-only
-```
-
-The focused campaign option checks all twenty levels without rerunning the broader
-stress suites: solve, fail/retry, optimal score, replay, sequential unlocks,
-progress reload, checkpoint/undo and hint caps. The default runner also checks
-400 paired deterministic Endless rounds, all five prediction cases, deadlines,
-pause/focus behavior, leaderboard ordering/top-10 persistence, exact save/resume,
-invalid JSON/tree saves, Sandbox undo/replay and heap restoration. Test artifacts
-use fresh directories under `build/endless-tests.*`; player saves are untouched.
-
-For the existing graphics smoke test, explicitly select the verified version:
-
-```bash
-mkdir -p build
-g++ -std=c++17 -I/usr/local/include tests/test.cpp -o build/sfml-test \
-    -L/usr/local/lib -Wl,-rpath,/usr/local/lib \
-    -lsfml-graphics -lsfml-window -lsfml-system
-DISPLAY=:0 ./build/sfml-test --auto-close
-```
 
 ## Specifications and structure
 
@@ -137,71 +112,3 @@ uses an available local DejaVu, Liberation or Windows Arial font; it does not
 download assets at runtime. Player saves/leaderboard are in `data/saves/`.
 The supplied official assignment PDF was read separately; it is not bundled.
 
-## Delivery evidence
-
-- [Project report (12-page PDF)](docs/i253017-i252125.pdf)
-- [Printable report source](docs/project-report.html)
-- [Executed checks and limitations](docs/test-results.txt)
-- [Level authoring notes](docs/level-authoring.txt)
-- [Tree benchmark CSV](docs/benchmarks/trees.csv) and [heap benchmark CSV](docs/benchmarks/heaps.csv)
-- Actual captures are under `docs/captures/`.
-
-Reproduce the model-only measurements with `bash tests/benchmark.sh`. They use
-deterministic data, events disabled, -O2 and independent output checks. Timings
-are one local CPU-clock run and may vary; assertions must remain enabled.
-The backend flag is `setEventRecording(false)`; the benchmark asserts that event
-batches remain empty while independent comparison/rotation/swap counters run.
-
-The report includes all seven Section 10 experiments: BST/AVL heights; 10,000
-searches with average comparisons and timing; average AVL rotations per insert
-and delete and maximum per delete; 1,000 kth queries; bottom-up heap build;
-Heap Sort on random/sorted/reverse/duplicate-heavy inputs; and comparison with
-manual Insertion Sort, including time, comparisons, swaps/shifts and auxiliary
-space. All sizes are 100, 1,000 and 10,000. CSVs retain the unrounded measurements.
-
-## What to include in the submission
-
-Submit the project folder with these contents, retaining its directory layout:
-
-| Path | Purpose |
-| --- | --- |
-| `src/` | All implementation `.cpp` files, including `main.cpp` |
-| `include/` | All project `.h` headers needed to compile the implementation |
-| `tests/` | Unit/controller test `.cpp` files, runners and benchmark source |
-| `data/levels/` | All twenty external level JSON definitions |
-| `assets/` | Any supplied runtime fonts/images/audio and their notices |
-| `run.sh`, `.vscode/` | Build/run script and development configurations |
-| `docs/i253017-i252125.pdf` | Written report with complexity, results and screenshots |
-| `docs/test-results.txt`, `docs/test-run-2026-11-22.txt` | Test report and actual latest run output |
-| `docs/level-authoring.txt` | Level schema, editing example and verification instructions |
-| `docs/benchmarks/`, `docs/captures/` | Raw measured results and actual screenshot evidence |
-| `README.md`, remaining `docs/` | Setup, controls, specifications and report source |
-
-"All source files" includes both implementation `.cpp` files and their `.h`
-headers, including the test and benchmark source. An executable alone is not
-source code. Include the Linux executable `build/vault-heist` too if the handout
-asks for a runnable build; the review packager includes it. Do not include `.git`,
-temporary build/test directories, editor caches or personal save/leaderboard files.
-
-"Unit test suite ... along with a test report" means the runnable automated
-checks **and** a document recording what was tested, the commands, actual outcomes
-and limitations. This is supplied by `tests/backend/`, `tests/middleware/`,
-`tests/run.sh` and the two test-report files above. Performance benchmarks are a
-separate deliverable and do not replace correctness tests.
-
-"Level data files and a short guide" means the JSON scenarios **and** instructions
-explaining their fields and how to edit, load and validate a level. See
-`data/levels/` and `docs/level-authoring.txt`. The current implementation supports
-replacing scenarios within twenty fixed campaign slots. Extra slots/new objective
-types require code changes; it does not yet support arbitrary no-code expansion.
-
-The executable targets Ubuntu WSL/WSLg with the installed SFML 2.6.1 libraries.
-A native Windows .exe has not been produced. Exhaustive manual GUI/performance
-acceptance and optional audio testing remain unverified. Some nonmutating
-Sandbox queries report results without full per-node animation. Campaign JSON
-uses fixed reproducible arrays; its seed field does not randomize those arrays.
-
-`tests/package-review.ps1` creates a fresh review ZIP with source, executable,
-levels, report and tests, excluding player saves and Git history. Fill in the
-actual contributor details and rename the ZIP to the course's required
-`25I-XXXX_25I-XXXX_Section.zip` pattern before official submission.
